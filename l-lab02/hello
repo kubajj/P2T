@@ -1,0 +1,7 @@
+#!/bin/bash
+
+# An example script for use in Lab02
+# James McMinn - 0800890m@student.gla.ac.uk
+# June 2010
+
+echo "Hello, $USER!"

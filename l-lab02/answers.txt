@@ -1,0 +1,104 @@
+--------------------------------------------------------------------------------
+    LAB 02                                       Advanced Command Line Usage    
+--------------------------------------------------------------------------------
+
+    Answer all questions for Lab02 in this file.
+
+
+--------------------------------------------------------------------------------
+    QUESTIONS - Managing Processes
+--------------------------------------------------------------------------------
+
+------------------
+    QUESTION 1
+------------------
+
+A)									[1]  
+load average: 0.42, 0.47, 0.62
+
+B) 									[1]
+Tasks: 317 total,   2 running, 315 sleeping
+--> 2 are running
+C) 									[1]
+top -u <user>
+------------------
+    QUESTION 2 
+------------------
+									[1]
+It launches the program in the background. It does not interfere with the bash prompt.
+
+------------------
+    QUESTION 3 
+------------------
+									[2]
+
+ps --no-headers | wc -l
+
+--------------------------------------------------------------------------------
+    QUESTIONS - Variables and the Path Variable
+--------------------------------------------------------------------------------
+
+------------------
+    QUESTION 4 
+------------------
+									[2]
+Some totally trustworthy person, could change the PATH variable, then if I execute a totally harmless command, such as ls, if the person changed it in a clever way, so that the directory that he created or just inserted his harmless version of the script ls that copies all your passwords and sends them somewhere in Afghanistan, is at the beginning of the path, so it would have the highest priority, we might have a problem that ls command would not work, because it would be doing something completely different. I don't care about my passwords, they are encrypted, but I want to see the files that I have in current directory. This is a huge security issue. 
+    
+------------------
+    QUESTION 5 
+------------------
+
+A=Apple
+B=Ball
+C=Cat
+
+A)  									[1]
+Apple
+B)  									[1]
+AppleBall
+C)  									[1]
+\n	
+D)  									[1]
+\n
+E)  									[1]
+Catat
+F)  									[1]
+"Apple Ball Cat"
+G)  									[1]
+'$A $B $C'
+H)  									[1]
+$A
+
+--------------------------------------------------------------------------------
+    QUESTIONS - Pipes and Redirection 
+--------------------------------------------------------------------------------
+    
+------------------
+    QUESTION 6 
+------------------
+									[2]
+It counts the adjacent matching lines, if it was not sorted, they won't be adjacent, so all of them would probably have 1 as a prefix    
+------------------
+    QUESTION 7 
+------------------
+
+A)  									[1]
+grep searches the input for lines containing a match to a given pattern (such as some regex) and by default it prints them out
+B)  									[1]
+grep "Chapter" Bash-Beginners-Guide.txt
+    
+------------------
+    QUESTION 8 
+------------------
+									[5]
+   
+It first sort the file containing our bash history, then it gives each line a prefix of count of the occurences of the line in the file, then it sorts the lines from lowest to highest value of the prefix and then outputs last ten lines of the sorting, which are then stored in the commands.txt file.    
+-------------------
+    QUESTION 9 
+-------------------
+									[2]
+   
+>> appends to the file, > overwrites the file
+--------------------------------------------------------------------------------
+    FINISHED LAB 02                                             MARKS: XX/27    
+--------------------------------------------------------------------------------
