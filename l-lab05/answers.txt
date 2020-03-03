@@ -1,0 +1,90 @@
+--------------------------------------------------------------------------------
+    LAB 05     			                             GNU Make and Git 
+--------------------------------------------------------------------------------
+
+    Answer all questions for Lab05 in this file. Questions or tasks which 
+    require you to edit another file have the name of the file already 
+    entered for you.
+
+--------------------------------------------------------------------------------
+    QUESTIONS
+--------------------------------------------------------------------------------
+
+------------------
+    QUESTION 1 
+------------------
+
+A)									[2]
+git clone https://bitbucket.org/glaphysp2t/lab5-example.git
+git init
+B)									[2]
+git log --oneline (or git shortlog, but that does not give hash code)
+2a65f62 A simple program that prints out an ASCII histogram based on a test set of integer data
+C) 									[1]
+
+D)									[1]
+On branch master
+Your branch is up to date with 'origin/master'.
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   README.md
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	draw.o
+	histogram
+	histogram.o
+	util.o
+
+no changes added to commit (use "git add" and/or "git commit -a")    
+E) 									[2]
+git add README.md
+git commit -m "Update README.md with program behaviour description"
+[master 536a023] Update README.md with program behaviour description
+ 1 file changed, 2 insertions(+)
+F) 									[1]
+git branch myfeature
+G) 									[2]
+git checkout myfeature
+  master
+* myfeature
+H) 									[1]
+[myfeature 3538b1a] Commit from myfeature branch
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+------------------
+    QUESTION 2
+------------------
+
+A)									[1]
+is the name of the target
+B)									[1]
+is the list of prerequisites for the target you are compiling
+C)									[1]
+is the name of the first prerequisite
+D)									[1]
+is the list of prerequisites that are newer han the target and therefore must be compiled first
+------------------
+    QUESTION 3
+------------------
+
+A) Submit modified Makefile						[5]
+
+B) Submit modified Makefile						[2]
+
+C) Submit modified C & H files						[3]
+
+D) Submit sim.data							[2]
+
+E) Submit graph image							[2]
+    
+F) 									[3]
+math.h is linked to use math functions
+rel_mass requires it for sqrt
+kinetic_energy uses it for pow
+G)									[2]
+
+--------------------------------------------------------------------------------
+    FINISHED LAB 05                                             MARKS: XX/35
+--------------------------------------------------------------------------------    
