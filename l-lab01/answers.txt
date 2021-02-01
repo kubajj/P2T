@@ -16,74 +16,76 @@ experiments:
 exp1
 
 experiments/exp1:
-data  docs  results
+5s  data  docs  results
+
+experiments/exp1/5s:
+15.data  25.data  35.data  45.data  50.data  5.data
 
 experiments/exp1/data:
-10.data  16.data  21.data  27.data  32.data  38.data  43.data  49.data  7.data
-11.data  17.data  22.data  28.data  33.data  39.data  44.data  4.data   8.data
-12.data  18.data  23.data  29.data  34.data  3.data   45.data  50.data  9.data
-13.data  19.data  24.data  2.data   35.data  40.data  46.data  5.data
-14.data  1.data   25.data  30.data  36.data  41.data  47.data  5s
-15.data  20.data  26.data  31.data  37.data  42.data  48.data  6.data
-
-experiments/exp1/data/5s:
-15.data  25.data  35.data  45.data  50.data  5.data
+10.data  12.data  14.data  16.data  18.data  1.data   21.data  23.data  25.data  27.data  29.data  30.data  32.data  34.data  36.data  38.data  3.data   41.data  43.data  45.data  47.data  49.data  50.data  6.data  8.data
+11.data  13.data  15.data  17.data  19.data  20.data  22.data  24.data  26.data  28.data  2.data   31.data  33.data  35.data  37.data  39.data  40.data  42.data  44.data  46.data  48.data  4.data   5.data   7.data  9.data
 
 experiments/exp1/docs:
 
 experiments/exp1/results:
-
-
 ------------------
-    QUESTION 2 
+    QUESTION  2
 ------------------
-cp -R experiment experiments/exp1					[1]
-    
+									[1]
+cp -R experiment experiments/exp1    
 ------------------
     QUESTION 3
 ------------------
 									[1]
-The directory is not empty.
+As man rmdir says
+NAME
+       rmdir - remove empty directories
+It removes empty directories. Directory experiment was not empty at that time.
 ------------------
     QUESTION 4
 ------------------
-rm -r experiment							[1]
-    
+									[1]
+rm -r experiment
 ------------------
     QUESTION 5
 ------------------
 
-A)									[1]
+A) 									[1]
+They are completely different.
+Here is their description from man.
        -r, --reverse
               reverse order while sorting
-
+It outputs the output in reverse order and does not list subdirectories recursively.
        -R, --recursive
               list subdirectories recursively
+It lists subdirectories recursively and does not reverse the order.
+Hence, they are a completely different thing.
 B)  									[1]
+Shows hidden files:
        -a, --all
-              do not ignore entries starting with 
-	in other words - shows all files including the hidden ones
+              do not ignore entries starting with .
 C) 									[1]
-	it starts with .
+It starts with .
 D) 									[1]
-	.PhysicsIsFun
+.PhysicsIsFun
+Created with the following command:
+touch ~/experiment/data/.PhysicsIsFun    
 ------------------
     QUESTION 6
 ------------------
 
 A) 									[1]
-	. is current dict
-	.. is parent dict
+. is current directory
+.. is the parent directory
+Unless we are are in the root directory. Root is its own parent.
 B)  									[1]
-        ls -A, --almost-all
-              do not list implied . and ..
-
+ls -A
 ------------------
     QUESTION 7 
 ------------------
 
 A)  									[1]
-ls -S
+ls -s
 B) 									[1]
 ls -t
 -------------------
@@ -91,19 +93,17 @@ ls -t
 -------------------
 
 A)									[1]
-cd ../../
+cd ../..
 B)									[1]
-cd ~/experiments
-    
+cd /home/2478625j/experiments
 -------------------
     QUESTION 9 
 -------------------
     
 A)									[1]
--N  ........  --LINE-NUMBERS
-      Use line numbers.
+less -N linux-lab01/generate.sh    
 B) 									[1]
-exit 1
+     exit 1    
 -------------------
     QUESTION 10
 -------------------
@@ -113,7 +113,7 @@ A)									[1]
 B)									[1]
 head -n 5
 C)									[1]
-wc -l 
+wc -l
 
 --------------------------------------------------------------------------------
     QUESTIONS - File Permissions
@@ -124,29 +124,31 @@ wc -l
 -------------------
 
 A) 									[1]
-me and my group can read and write to the file
-everybody else can only execute it
+Owner and owner's groups can read and write. Everybody else can only execute.
 B)  									[1]
-chmod 740 nameofthefile
+chmod 740 <filename> - added execute permission to owner (+1) remove write from group (-2), remove execute from everybody else (to 0)
+read - 4
+write - 2
+execute - 1
 -------------------
     QUESTION 12
 -------------------
 									[1]
-directory starts with d and then there are the other permissions such as read, write and execute
+It starts with d instead of -.
     
 -------------------
     QUESTION 13
 -------------------
 
 A) 									[1]
-rm -i
+By including -i flag.
 B) 									[1]
-rm -f      
+By including -f flag.
 -------------------
     QUESTION 14
 -------------------
-Sssshhh, it's a secret :)						[1]
-	
+									[1]
+Sssshhh, it's a secret :)
 --------------------------------------------------------------------------------
     FINISHED LAB 01                                             MARKS: XX/25    
 --------------------------------------------------------------------------------
