@@ -13,4 +13,5 @@ int main(void) {
         printf("%d / %3.2f = %3.2f\n",c,some_float,l);
 	int m = c % other_int;
 	printf("%d %% %d = %3d\n",c,other_int,m);
+	return 0;
 }
