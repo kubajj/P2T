@@ -14,26 +14,26 @@
 ------------------
 
 A)									[1]  
-load average: 17.24, 14.22, 14.44
+load average: 0.42, 0.47, 0.62
+
 B) 									[1]
-Tasks: 1699 total,   7 running, 1679 sleeping
+Tasks: 317 total,   2 running, 315 sleeping
+--> 2 are running
 C) 									[1]
-top -u 2478625j
+top -u <user>
 ------------------
     QUESTION 2 
 ------------------
 									[1]
-Runs the command in the background, therefore the prompt shows up again
-and we can use both the terminal and the command we launched (for example 
-if it is emacs we can code it emacs, while executing other commands from terminal)
+It launches the program in the background. It does not interfere with the bash prompt.
 
 ------------------
     QUESTION 3 
 ------------------
 									[2]
 
-This shows number of all (-e) processes running on the system.
-ps --no-headers -e | wc -l
+ps --no-headers | wc -l
+
 --------------------------------------------------------------------------------
     QUESTIONS - Variables and the Path Variable
 --------------------------------------------------------------------------------
@@ -42,14 +42,8 @@ ps --no-headers -e | wc -l
     QUESTION 4 
 ------------------
 									[2]
-
-If we added a directory that anybody can write to, then we have a security issue.
-If somebody was so clever, that they would add to that directory a script, which 
-overwrites the PATH variable with something which would start with a folder which 
-he or she would create in which there would be scripts that will ruin your life 
-(something like rm -rf /, rm -rf /home, etc) and can be named by usual command 
-like ls or cd. And this all started so as an innocent
-addition to PATH variable.    
+Some totally trustworthy person, could change the PATH variable, then if I execute a totally harmless command, such as ls, if the person changed it in a clever way, so that the directory that he created or just inserted his harmless version of the script ls that copies all your passwords and sends them somewhere in Afghanistan, is at the beginning of the path, so it would have the highest priority, we might have a problem that ls command would not work, because it would be doing something completely different. I don't care about my passwords, they are encrypted, but I want to see the files that I have in current directory. This is a huge security issue. 
+    
 ------------------
     QUESTION 5 
 ------------------
@@ -69,9 +63,9 @@ D)  									[1]
 E)  									[1]
 Catat
 F)  									[1]
-Apple Ball Cat
+"Apple Ball Cat"
 G)  									[1]
-$A $B $C
+'$A $B $C'
 H)  									[1]
 $A
 
@@ -83,34 +77,28 @@ $A
     QUESTION 6 
 ------------------
 									[2]
-The matching lines have to be adjacent. When unsorted, this is not guaranteed.
-Therefore the result would be different.
+It counts the adjacent matching lines, if it was not sorted, they won't be adjacent, so all of them would probably have 1 as a prefix    
 ------------------
     QUESTION 7 
 ------------------
 
 A)  									[1]
-grep searches for patterns in a given input.
+grep searches the input for lines containing a match to a given pattern (such as some regex) and by default it prints them out
 B)  									[1]
-grep Chapter ./linux-lab02/extras/Bash-Beginners-Guide.txt
+grep "Chapter" Bash-Beginners-Guide.txt
+    
 ------------------
     QUESTION 8 
 ------------------
 									[5]
-sort ~/.bash_history sorts contents of file .bash_history in ascending order
-uniq -c merges matching lines (they are adjacent because they are sorted)
-and adds count of each of them in front of them
-sort -n sorts it in ascending order by the numbers
-tail extracts just last 10 lines of it
-> commands.txt stores the output in file commands.txt in current directory
-    
+   
+It first sort the file containing our bash history, then it gives each line a prefix of count of the occurences of the line in the file, then it sorts the lines from lowest to highest value of the prefix and then outputs last ten lines of the sorting, which are then stored in the commands.txt file.    
 -------------------
     QUESTION 9 
 -------------------
 									[2]
    
-> overwrites the destination
->> appends to it
+>> appends to the file, > overwrites the file
 --------------------------------------------------------------------------------
     FINISHED LAB 02                                             MARKS: XX/27    
 --------------------------------------------------------------------------------
