@@ -1,27 +1,35 @@
 #!/bin/bash
 
-# create a new variable DIR which is initialized with the current timestamp
-DIR=$(date +%s)
-# check if there exists a file with name of the current timestamp
-if [ -e ${DIR} ]; then
-	echo "${DIR} already exists"
-	# if it does, inform the user and exit with 1
-	exit 1
-else
-	# if it does not, create a directory with that name
-	mkdir ${DIR}
-	# create 10 files
-	for n in {1..10}
-	do
-		# create a file in the new directory with name randomN.data
-		touch ${DIR}/random${n}.dat
-		# put 50 random numbers to the file
-		for r in {1..50}
-		do
-			# append one random number to the file
-			echo $RANDOM >> ${DIR}/random${n}.dat
-		done	
-	done
+# Get current timestamp
+NAME=$(date +%s)
+# Create pseudoboolean
+EXIST="false"
+# If current timestamp is a directory
+if [ -d $NAME ]; then
+  # Print it exists
+  echo "${NAME} already exists"
+  # Terminate with failure
+  exit 1
+# If timestamp is a file
+elif [ -e $NAME ]; then
+  # Print that it is already a file
+  echo "${NAME} is an existing file"
+  # Terminate with failure
+  exit 1
 fi
-# if everything goes well, exit with 0
+# Create a directory with the timestamp name
+mkdir $NAME
+# Loop 10 times
+for i in {1..10}
+do
+  # Create a file called random<n>.dat
+  FILE="${NAME}/random${i}.dat"
+  # Loop 50 times
+  for j in {1..50}
+  do  
+    # Add random number to the file
+    echo $RANDOM >> $FILE
+  done
+done
+# Terminate
 exit 0

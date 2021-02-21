@@ -1,6 +1,7 @@
 #!/bin/bash
 
-# create all three directories one by one
-mkdir data
-mkdir data/processed
-mkdir docs
+# Create file processed in ./data
+# As ./data is supposed to be creaed too, -p is used
+mkdir -p ./data/processed
+# Create directory ./docs
+mkdir ./docs

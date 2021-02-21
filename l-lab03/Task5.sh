@@ -1,20 +1,22 @@
 #!/bin/bash
-# for every argument:
-for i in $@
+
+# Loop through arguments
+for file in $@
 do
-  # check if the argument is an existing file
-  if [ -e $i ]; then
-    # if it exists and is a directory, inform user about it
-    if [ -d $i ]; then
-      echo "$i is a directory"
+  # If file with name of current argument exists
+  if [ -e $file ]; then
+    # and is a directory
+    if [ -d $file ]; then
+      # Print that it is a directory
+      echo "${file} is a directory"
     else
-      # if it exists, but it it not a directory then print that it is a file
-      echo "$i is a file"
+      # Print that it is a file
+      echo "${file} is a file"
     fi
   else
-    # if it does not exist, print that it does not exist
-    echo "$i does not exists"
+    # Print that it does not exist
+    echo "${file} does not exists"
   fi
 done
-# if everything goes well exit with 0
+# Terminate
 exit 0
