@@ -1,21 +1,28 @@
 #!/bin/bash
 
-# loop through all files in the directory
+# This script finds individual files in the current directory of size 0
+# and if confirmed deletes them.
+
+# Loop through the directory
 for file in *
 do
-	# if the file does not have nonzero size -> so it is empty, then:
-	if [ ! -s ${file} ]; then
-		# ask the user for confirmation
-		echo "Do you want to delete ${file}? [Y/N]"
-		# read user's answer
-		read answer
-		# check if it is Y, which means that I should delete the file
-		if [ ${answer} == "Y" ]; then
-			# print that the file is deleted
-			echo "Deleting ${file}"
-			# delete the file
-			rm ${file}
-		fi
-	fi
+  # Check if file is empty
+  if [ ! -s ${file} ]; then
+    # Could use just rm -i ${file} but that is not the point of exercise
+
+    # Ask for confirmation
+    echo "Do you want to delete ${file}? [Y/N]"
+
+    # Read in response
+    read response
+
+    # Validate response
+    if [ ${response} == "Y" ]; then
+      # Delete file and inform user
+      rm -f ${file}
+      echo "${file} deleted."
+    fi
+  fi
 done
-# terminate
+# Terminate with success
+exit 0

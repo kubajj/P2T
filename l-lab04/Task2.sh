@@ -1,8 +1,22 @@
 #!/bin/bash
 
-# go through each of the line of the file individually
-cat help-read.txt | while read line;
-do
-	# call wc to count words and redirect the content of line to it as input
-	echo "${line}" | wc -w
-done
+# This script print the word count of each line in help-read.txt
+
+# Filename
+FILE="help-read.txt"
+
+# If file does not exist exit with failure
+if [ ! -e "${FILE}" ]; then
+  echo "${FILE} does not exists."
+  exit 1
+else
+  # For each line in the file
+  cat ${FILE} | while read line;
+  do
+    # Print word count of the line
+    echo "${line}" | wc -w
+  done
+fi
+
+# Terminate with success
+exit 0

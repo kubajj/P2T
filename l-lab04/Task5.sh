@@ -1,33 +1,37 @@
 #!/bin/bash
 
-#create function process
+# Function process decodes a string using base64
 process() {
-	# process has to be called with a name of file as an argument
-	# take first line and decode it
-	echo | head -n 1 ${1} | base64 -d
-	# take last line and decode it
-	echo | tail -n 1 ${1} | base64 -d 
+  echo ${1} | base64 -d
 }
 
-# check if there are any arguments and exit with 1 if not
-if [ $# == 0 ]; then
-	echo "No arguments were given"
-	exit 1
-else
-	# loop through all the arguments
-	for file in $@
-	do
-		# call echo "${file}" - just for testing
+# Check if at least one argument was supplied
+if [ $# -eq 0 ]; then
+  echo "No argument was supplied."
 
-		# if the current argument is not a file, then exit with 2
-		if [ ! -f ${file} ]; then
-			echo "${file} is not a regular file"
-			exit 2
-		else
-			# if it is a file, decode the first and last line of the file
-			process ${file}
-		fi
-	done
+  # Terminate with failure
+  exit 1
 fi
-# If everything goes right, exit 0
+
+# Loop through arguments to check if all of the files exist
+for file in $@
+do  
+  # Check if the file exists
+  if [ ! -f ${file} ]; then
+    echo "${file} is not a file"
+
+    # Terminate with failure
+    exit 2
+  fi
+done
+
+# Loop through arguments to decode them
+for file in $@
+do
+  # Call decoder on first and last line
+  process $(head -n 1  "${file}")
+  process $(tail -n 1  "${file}")
+done
+
+# Terminate with success
 exit 0

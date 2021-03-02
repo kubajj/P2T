@@ -1,18 +1,34 @@
 #!/bin/bash
-# loop through all of the arguments
-for file in $@
-do
-	# if the current argument is not an existing file, print that it does not exist
-	if [ ! -e ${file} ]; then
-		echo "${file} does not exits"
-	else
-		# if it is a directory, print that it is a directory
-		if [ -d ${file} ]; then
-			echo "${file} is a directory"
-		# otherwise, print that it is a file
-		else
-			echo "${file} is a file"
-		fi
-	fi
-done
-# end of the program
+
+# This script for every file name passed as a parameter, prints
+# if it is a file, directory or does not exist
+
+function argsCheck {
+  for file in $@
+  do
+    # If file with name of current argument exists
+    if [ -e $file ]; then
+      # and is a directory
+      if [ -d $file ]; then
+        # Print that it is a directory
+        echo "${file} is a directory"
+      else
+        # Print that it is a file
+        echo "${file} is a file"
+      fi
+    else
+      # Print that it does not exist
+      echo "${file} does not exists"
+    fi
+  done
+}
+
+# Test functionality
+if [ $# -eq 0 ]; then
+  echo "Please provide at least one argument."
+else
+  argsCheck $@
+fi
+
+# Terminate with success
+exit 0
