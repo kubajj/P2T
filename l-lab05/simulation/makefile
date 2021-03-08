@@ -1,16 +1,23 @@
 CC=gcc
-CFLAGS=-O3
-LDFLAGS=-lm
-EXE=prog
-OBJ=main.o simulation.o
+CCFLAGS=-Wall -g -O2
+LIBS=-lm
+OBJECTS=main.o simulation.o
+EXE=mycode
 
-$(EXE): main.o simulation.o
-	$(CC) $(LDFLAGS) -o $@ $^
+all: clean $(EXE)
 
-%.o:%.c
-	$(CC) $(LDFLAGS) -c $<
+$(EXE): $(OBJECTS)
+	$(CC) $(CCFLAGS) -o $@ $^ $(LIBS)
+
+# Target for both main.o and simualtion.o as they are defined as OBJECTS
+%.o: %.c
+	$(CC) $(CCFLAGS) -c $^
+
+run: $(EXE)
+	./$(EXE) > sim.data
 
 .PHONY: clean
+
+# Remove obejct files
 clean:
-	rm *.o
-	rm $(EXE)
+	rm -f *.o

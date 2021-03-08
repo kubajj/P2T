@@ -1,0 +1,4 @@
+*.docx
+*._*
+*.tmp
+.DS_Store

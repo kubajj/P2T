@@ -15,56 +15,100 @@
 ------------------
 
 A)									[2]
+Copy a repository:
 git clone https://bitbucket.org/glaphysp2t/lab5-example.git
+Create a new git repository:
 git init
 B)									[2]
-git log --oneline (or git shortlog, but that does not give hash code)
-2a65f62 A simple program that prints out an ASCII histogram based on a test set of integer data
+Command:
+git log --oneline
+Message associated to hash:
+A simple program that prints out an ASCII histogram based on a test set of integer data
 C) 									[1]
-
+nswer in README.md
 D)									[1]
-On branch master
-Your branch is up to date with 'origin/master'.
-
-Changes not staged for commit:
-  (use "git add <file>..." to update what will be committed)
-  (use "git restore <file>..." to discard changes in working directory)
-	modified:   README.md
-
-Untracked files:
-  (use "git add <file>..." to include in what will be committed)
-	draw.o
-	histogram
-	histogram.o
-	util.o
-
-no changes added to commit (use "git add" and/or "git commit -a")    
+# On branch master
+# Changes not staged for commit:
+#   (use "git add <file>..." to update what will be committed)
+#   (use "git checkout -- <file>..." to discard changes in working directory)
+#
+#	modified:   README.md
+#
+no changes added to commit (use "git add" and/or "git commit -a")
 E) 									[2]
 git add README.md
-git commit -m "Update README.md with program behaviour description"
-[master 536a023] Update README.md with program behaviour description
- 1 file changed, 2 insertions(+)
+git commit -m "Update README.md"
+
+Output of gitlog:
+commit e927c4e381a63b7b6b9da968ff22dc17dbc18df1
+Author: Jakub Jelinek <vilouskubajj@gmail.com>
+Date:   Wed Mar 3 10:52:02 2021 +0000
+
+    Update README.md
+
+commit 8fbd35f49df21f5b607e6f8a309cb15dd4973c2e
+Author: Gareth Roy <gareth.roy@gmail.com>
+Date:   Thu Jan 8 13:51:56 2015 +0000
+
+    Refactored to move utility code out of the main file
+...
+(All the other commits are following, I am including just oneliners of them)
+e532f4f Added randomly generated data
+6dcdfe5 Refactored code so that the drawing routines are in their own file, added to the makefile
+6b4875c Added a simple makefile to build histogram, included a make test which runs the program
+8b2c746 Added a function that calculates the maximum of a list of data and returns it's value
+66ee505 Added in a simple axis to the histogram
+c496941 Refactored to create a printBar function
+2a65f62 A simple program that prints out an ASCII histogram based on a test set of integer data
+d71c39b Added an initial README to the project
 F) 									[1]
 git branch myfeature
 G) 									[2]
+Command:
 git checkout myfeature
+Output of git branch --list:
   master
 * myfeature
 H) 									[1]
-[myfeature 3538b1a] Commit from myfeature branch
- 1 file changed, 1 insertion(+), 1 deletion(-)
+commit 61f5cf0fc274449c23c8110384ff9a38898b4c2b
+Author: Jakub Jelinek <vilouskubajj@gmail.com>
+Date:   Wed Mar 3 10:59:03 2021 +0000
+
+    Add a question to think about to histogram.c
+
+commit e927c4e381a63b7b6b9da968ff22dc17dbc18df1
+Author: Jakub Jelinek <vilouskubajj@gmail.com>
+Date:   Wed Mar 3 10:52:02 2021 +0000
+
+    Update README.md
+
+commit 8fbd35f49df21f5b607e6f8a309cb15dd4973c2e
+Author: Gareth Roy <gareth.roy@gmail.com>
+Date:   Thu Jan 8 13:51:56 2015 +0000
+
+    Refactored to move utility code out of the main file
+
+The rest of the output is the same and is long. Oneliners are in the answer for question 1 e).
 ------------------
     QUESTION 2
 ------------------
 
 A)									[1]
-is the name of the target
+$@ is the name of the current target
+If we are building main.o it is main.o
 B)									[1]
-is the list of prerequisites for the target you are compiling
+$^ is the list of prerequisities of the target
+If main.o requires validate.o and complexmaths.o, then $^ is validate.o complexmaths.o
 C)									[1]
-is the name of the first prerequisite
+$< is the name of the first prerequisite
+In case of target being main.o defined as follows
+main.o: main.c
+	gcc -o boom $<
+$< would insert main.c
 D)									[1]
-is the list of prerequisites that are newer han the target and therefore must be compiled first
+$? is a list of the prerequisities that are newer than the target (they need to be compiled first)
+So if the target already exists, but some of the prerequisities were modified (they have new timestamp) the are in $?
+I did not find any use case for this variable
 ------------------
     QUESTION 3
 ------------------
@@ -80,11 +124,12 @@ D) Submit sim.data							[2]
 E) Submit graph image							[2]
     
 F) 									[3]
-math.h is linked to use math functions
-rel_mass requires it for sqrt
-kinetic_energy uses it for pow
+We need the math library to be able to use sqrt and pow. Both functions in simulation source file
+(rel_mass and kinetic_energy) are using it.    
 G)									[2]
-
+For debugging we can use:
+gcc -g
+For optimisation, we can use -O<n>. -O2 is recommended in most cases.
 --------------------------------------------------------------------------------
     FINISHED LAB 05                                             MARKS: XX/35
 --------------------------------------------------------------------------------    
