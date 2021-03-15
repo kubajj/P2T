@@ -1,0 +1,70 @@
+--------------------------------------------------------------------------------
+    LAB 06                                                      GDB & DEBUGGING
+--------------------------------------------------------------------------------
+
+    Answer all questions for Lab06 in this file. Questions or tasks which 
+    require you to edit another file have the name of the file already 
+    entered for you.
+
+--------------------------------------------------------------------------------
+    QUESTIONS
+--------------------------------------------------------------------------------
+
+------------------
+    QUESTION 1 
+------------------
+
+A)									[1]  
+The Debug flag needs to be set to -g.
+B)  									[2]
+It crashes with Segmentation fault error.
+To run debugger, I used
+gdb --tui myprog
+C) 									[2]
+break 1
+D) 									[2]
+line 9
+E) 									[1]
+s    
+We cannot use n because it does not enter the function.
+F)									[2]
+It occured on line 10 in util.c
+
+Program	received signal	SIGSEGV, Segmentation fault.
+0x00000000004006a5 in generateRandomData (data=0x7fffffffe020, len=10) at util.c:10
+G) 									[2]
+print dataptr
+$1 = (int *) 0x0
+which means that it is still NULL    
+H)  									[3]
+print *dataptr
+Cannot access memory at address 0x0
+
+*dataptr is still NULL, it is not pointing to anything
+I)  									[1]
+It probably entered an infinite loop printing a negative number decreasing by one on each line,
+colon and a zero.
+J) 									[2]
+We fixed the problem at line 9, so we can set it at line 10.
+K) 									[2]
+$1 = {4, 84, 81, 20, 32, 97, 58, 69, 93, 57}
+They are just 10 random numbers
+L)									[1]
+watch i
+M) 									[2]
+Iterator i changes its value, so the debugger prints the following:
+Hardware watchpoint 2: i
+
+Old value = 0
+New value = -1
+0x0000000000400640 in main () at main.c:13
+What seems wrong is that i is negative now. But after a short inspection, we see that
+there is i-- instead of i++ at the end of the for loop declaration.
+N) 									[2]
+It means that the iterator is decreasing, rather than increasing. We cannot access
+data[-1]. Indices are only non-negative integers.
+O) 									[2]
+Change i-- to i++.
+--------------------------------------------------------------------------------
+    FINISHED LAB 06                                             MARKS: XX/28
+--------------------------------------------------------------------------------
